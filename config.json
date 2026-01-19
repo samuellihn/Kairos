@@ -1,0 +1,17 @@
+{
+  "categories": [
+    {
+      "id": "cat_1",
+      "name": "Work",
+      "target_hours": 20,
+      "priority": 1
+    },
+    {
+      "id": "cat_2",
+      "name": "Personal",
+      "target_hours": 10,
+      "priority": 2
+    }
+  ],
+  "free_time_chance": 0.05
+}
