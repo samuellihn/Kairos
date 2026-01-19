@@ -1,0 +1,37 @@
+[
+  {
+    "type": "session_start",
+    "timestamp": "2026-01-19T06:22:40.152Z",
+    "category": "Social"
+  },
+  {
+    "type": "task_start",
+    "timestamp": "2026-01-19T06:22:40.154Z",
+    "task": "Call Mom",
+    "category": "Social"
+  },
+  {
+    "type": "task_complete",
+    "timestamp": "2026-01-19T06:23:27.818Z",
+    "task": "Call Mom",
+    "category": "Social"
+  },
+  {
+    "type": "task_switch",
+    "timestamp": "2026-01-19T06:23:27.820Z",
+    "from": "Call Mom",
+    "to": "General Social Work",
+    "category": "Social"
+  },
+  {
+    "type": "session_start",
+    "timestamp": "2026-01-19T06:26:49.971Z",
+    "category": "Homework"
+  },
+  {
+    "type": "task_start",
+    "timestamp": "2026-01-19T06:26:49.974Z",
+    "task": "Review Lecture Notes",
+    "category": "Homework"
+  }
+]

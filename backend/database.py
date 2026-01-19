@@ -8,6 +8,7 @@ CONFIG_FILE = BASE_DIR / "config.json"
 HISTORY_FILE = BASE_DIR / "history.json"
 CACHE_FILE = BASE_DIR / "task_cache.json"
 PAUSE_LOG_FILE = BASE_DIR / "pause_log.json"
+EVENT_LOG_FILE = BASE_DIR / "event_log.json"
 
 DEFAULT_CONFIG = {
     "categories": [
@@ -55,3 +56,8 @@ def append_pause_log(entry: Dict[str, Any]) -> None:
     logs = _load_json(PAUSE_LOG_FILE, [])
     logs.append(entry)
     _save_json(PAUSE_LOG_FILE, logs)
+
+def append_event_log(entry: Dict[str, Any]) -> None:
+    logs = _load_json(EVENT_LOG_FILE, [])
+    logs.append(entry)
+    _save_json(EVENT_LOG_FILE, logs)

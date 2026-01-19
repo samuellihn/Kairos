@@ -4,9 +4,10 @@ from typing import List, Optional, Dict, Any
 from fastapi import FastAPI, HTTPException, Body
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
+from fastapi.staticfiles import StaticFiles
 from contextlib import asynccontextmanager
 
-from .database import load_config, save_config, append_history, get_history, load_task_cache, save_task_cache, append_pause_log
+from .database import load_config, save_config, append_history, get_history, load_task_cache, save_task_cache, append_pause_log, append_event_log
 from .taskade import fetch_taskade_tasks
 
 # Define generic result type
@@ -31,9 +32,18 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-@app.get("/")
-async def root():
+@app.get("/api/health")
+async def health_check():
     return {"message": "Kairos Backend Running"}
+
+# Serve frontend build if it exists
+frontend_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "frontend", "out")
+if os.path.exists(frontend_path):
+    app.mount("/", StaticFiles(directory=frontend_path, html=True), name="static")
+else:
+    @app.get("/")
+    async def root():
+        return {"message": "Frontend not found. Run 'npm run build' in frontend/"}
 
 @app.get("/config")
 async def get_config_endpoint():
@@ -56,6 +66,11 @@ async def append_history_endpoint(entry: Dict[str, Any] = Body(...)):
 @app.post("/pause_log")
 async def append_pause_log_endpoint(entry: Dict[str, Any] = Body(...)):
     append_pause_log(entry)
+    return {"status": "success"}
+
+@app.post("/log_event")
+async def log_event_endpoint(entry: Dict[str, Any] = Body(...)):
+    append_event_log(entry)
     return {"status": "success"}
 
 @app.post("/tasks")

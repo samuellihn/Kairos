@@ -48,10 +48,10 @@ def on_open(icon, item):
     try:
         # Check standard paths or just run command assuming it's in path
         # 'start' is cmd specific
-        cmd = 'start msedge --app=http://localhost:55545 --window-size=450,910'
+        cmd = 'start msedge --app=http://localhost:55544 --window-size=450,910'
         subprocess.Popen(cmd, shell=True)
     except:
-        subprocess.Popen(["start", "http://localhost:55545"], shell=True)
+        subprocess.Popen(["start", "http://localhost:55544"], shell=True)
 
 def setup_tray():
     icon_image = create_image()
