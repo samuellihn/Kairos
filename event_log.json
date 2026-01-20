@@ -206,5 +206,94 @@
     "task": "Finish app",
     "category": "Work",
     "elapsed": 22
+  },
+  {
+    "type": "session_start",
+    "timestamp": "2026-01-20T14:58:09.287Z",
+    "category": "Personal"
+  },
+  {
+    "type": "task_start",
+    "timestamp": "2026-01-20T14:58:09.288Z",
+    "task": "Stanford tax info Treehacks",
+    "category": "Personal"
+  },
+  {
+    "type": "timer_finish",
+    "timestamp": "2026-01-20T14:59:09.227Z",
+    "task": "Stanford tax info Treehacks",
+    "category": "Personal",
+    "elapsed": 60
+  },
+  {
+    "type": "timer_finish",
+    "timestamp": "2026-01-20T14:59:09.253Z",
+    "task": "Stanford tax info Treehacks",
+    "category": "Personal",
+    "elapsed": 60
+  },
+  {
+    "type": "timer_finish",
+    "timestamp": "2026-01-20T14:59:16.981Z",
+    "task": "Stanford tax info Treehacks",
+    "category": "Personal",
+    "elapsed": 60
+  },
+  {
+    "type": "timer_finish",
+    "timestamp": "2026-01-20T14:59:17.003Z",
+    "task": "Stanford tax info Treehacks",
+    "category": "Personal",
+    "elapsed": 60
+  },
+  {
+    "type": "session_start",
+    "timestamp": "2026-01-20T14:59:28.778Z",
+    "category": "Work"
+  },
+  {
+    "type": "task_start",
+    "timestamp": "2026-01-20T14:59:28.780Z",
+    "task": "Finish app",
+    "category": "Work"
+  },
+  {
+    "type": "timer_finish",
+    "timestamp": "2026-01-20T15:01:08.805Z",
+    "task": "Finish app",
+    "category": "Work",
+    "elapsed": 60
+  },
+  {
+    "type": "timer_finish",
+    "timestamp": "2026-01-20T15:01:08.849Z",
+    "task": "Finish app",
+    "category": "Work",
+    "elapsed": 60
+  },
+  {
+    "type": "session_start",
+    "timestamp": "2026-01-20T15:07:34.033Z",
+    "category": "Work"
+  },
+  {
+    "type": "task_start",
+    "timestamp": "2026-01-20T15:07:34.038Z",
+    "task": "Finish app",
+    "category": "Work"
+  },
+  {
+    "type": "timer_finish",
+    "timestamp": "2026-01-20T15:08:35.448Z",
+    "task": "Finish app",
+    "category": "Work",
+    "elapsed": 60
+  },
+  {
+    "type": "timer_finish",
+    "timestamp": "2026-01-20T15:08:35.482Z",
+    "task": "Finish app",
+    "category": "Work",
+    "elapsed": 60
   }
 ]

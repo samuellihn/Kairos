@@ -12,6 +12,9 @@ from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 from fastapi.staticfiles import StaticFiles
 from contextlib import asynccontextmanager
+import threading
+import time
+from windows_toasts import WindowsToaster, Toast
 
 from .database import load_config, save_config, append_history, get_history, load_task_cache, save_task_cache, append_pause_log, append_event_log
 from .todoist_client import TodoistManager
@@ -25,7 +28,6 @@ todoist_manager = TodoistManager()
 
 # --- Session State Management ---
 from pydantic import BaseModel
-import time
 
 class ActiveSession(BaseModel):
     task_name: str
@@ -34,14 +36,55 @@ class ActiveSession(BaseModel):
     start_time: float # Unix timestamp
     task_due_date: Optional[str] = None
     related_tasks: List[Dict[str, Any]] = []
+    notified: bool = False
 
 current_session: Optional[ActiveSession] = None
 
+def monitor_sessions():
+    """
+    Background thread to check for expired sessions and trigger notifications.
+    """
+    print("Session monitor thread started.")
+    toaster = WindowsToaster('Kairos')
+    
+    while True:
+        try:
+            global current_session
+            if current_session:
+                now = time.time()
+                elapsed = now - current_session.start_time
+                duration_sec = current_session.duration_minutes * 60
+                
+                # Check if expired and not yet notified
+                if elapsed >= duration_sec and not current_session.notified:
+                    print(f"Session expired: {current_session.task_name}")
+                    
+                    # Trigger Toast
+                    new_toast = Toast()
+                    new_toast.text_fields = [f"Time's up! {current_session.task_name} is done."]
+                    try:
+                        toaster.show_toast(new_toast)
+                        print("Notification sent.")
+                    except Exception as e:
+                        print(f"Failed to send notification: {e}")
+                    
+                    # Mark as notified so we don't spam
+                    current_session.notified = True
+            
+            time.sleep(5) # Check every 5 seconds
+        except Exception as e:
+            print(f"Error in monitor thread: {e}")
+            time.sleep(5)
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # Startup
     print("Backend started.")
+    
+    # Start Monitor Thread
+    monitor_thread = threading.Thread(target=monitor_sessions, daemon=True)
+    monitor_thread.start()
+    
     yield
     # Shutdown
     print("Backend shutting down.")
@@ -183,6 +226,31 @@ async def stop_session_endpoint():
     current_session = None
     print("Session stopped/cleared.")
     return {"status": "success"}
+
+@app.post("/session/timeout")
+async def timeout_session_endpoint():
+    """
+    Called when the frontend timer finishes. 
+    Triggers immediate notification (if not already sent) but keeps the session active (so feedback can be entered).
+    Marks session as notified.
+    """
+    global current_session
+    if current_session:
+        # 1. Trigger Notification Immediately (if not yet)
+        if not current_session.notified:
+             print(f"Session timeout triggered via endpoint: {current_session.task_name}")
+             toaster = WindowsToaster('Kairos')
+             new_toast = Toast()
+             new_toast.text_fields = [f"Time's up! {current_session.task_name} is done."]
+             try:
+                toaster.show_toast(new_toast)
+             except Exception as e:
+                print(f"Failed to send notification: {e}")
+             current_session.notified = True
+
+        return {"status": "success", "message": "Session marked as timed out but kept active."}
+    
+    return {"status": "error", "message": "No active session"}
 
 
 # Serve frontend build if it exists
