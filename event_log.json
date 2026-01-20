@@ -33,5 +33,160 @@
     "timestamp": "2026-01-19T06:26:49.974Z",
     "task": "Review Lecture Notes",
     "category": "Homework"
+  },
+  {
+    "type": "session_start",
+    "timestamp": "2026-01-19T18:05:54.157Z",
+    "category": "Homework"
+  },
+  {
+    "type": "task_start",
+    "timestamp": "2026-01-19T18:05:54.167Z",
+    "task": "Finish MechE PSET 4",
+    "category": "Homework"
+  },
+  {
+    "type": "session_start",
+    "timestamp": "2026-01-19T18:23:13.450Z",
+    "category": "Admin"
+  },
+  {
+    "type": "task_start",
+    "timestamp": "2026-01-19T18:23:13.451Z",
+    "task": "Email Professor X",
+    "category": "Admin"
+  },
+  {
+    "type": "manual_start",
+    "timestamp": "2026-01-19T20:06:26.503Z",
+    "category": "Homework"
+  },
+  {
+    "type": "session_start",
+    "timestamp": "2026-01-19T20:06:26.505Z",
+    "category": "Homework"
+  },
+  {
+    "type": "task_start",
+    "timestamp": "2026-01-19T20:06:26.507Z",
+    "task": "Manual Homework Focus",
+    "category": "Homework"
+  },
+  {
+    "type": "timer_stop",
+    "timestamp": "2026-01-19T20:06:35.922Z",
+    "task": "Manual Homework Focus",
+    "category": "Homework",
+    "elapsed": 9
+  },
+  {
+    "type": "task_switch",
+    "timestamp": "2026-01-19T20:06:38.291Z",
+    "from": "Manual Homework Focus",
+    "to": "Finish MechE PSET 4",
+    "category": "Homework"
+  },
+  {
+    "type": "task_switch",
+    "timestamp": "2026-01-19T20:06:40.090Z",
+    "from": "Finish MechE PSET 4",
+    "to": "Review Lecture Notes",
+    "category": "Homework"
+  },
+  {
+    "type": "session_start",
+    "timestamp": "2026-01-19T20:29:14.254Z",
+    "category": "Personal"
+  },
+  {
+    "type": "task_start",
+    "timestamp": "2026-01-19T20:29:14.255Z",
+    "category": "Personal"
+  },
+  {
+    "type": "task_switch",
+    "timestamp": "2026-01-19T20:29:40.684Z",
+    "category": "Personal"
+  },
+  {
+    "type": "task_switch",
+    "timestamp": "2026-01-19T20:29:41.228Z",
+    "category": "Personal"
+  },
+  {
+    "type": "task_switch",
+    "timestamp": "2026-01-19T20:29:41.440Z",
+    "category": "Personal"
+  },
+  {
+    "type": "task_switch",
+    "timestamp": "2026-01-19T20:29:42.159Z",
+    "category": "Personal"
+  },
+  {
+    "type": "task_switch",
+    "timestamp": "2026-01-19T20:29:43.642Z",
+    "category": "Personal"
+  },
+  {
+    "type": "session_start",
+    "timestamp": "2026-01-20T04:04:03.843Z",
+    "category": "Work"
+  },
+  {
+    "type": "task_start",
+    "timestamp": "2026-01-20T04:04:03.845Z",
+    "category": "Work"
+  },
+  {
+    "type": "session_start",
+    "timestamp": "2026-01-20T14:18:18.779Z",
+    "category": "Personal"
+  },
+  {
+    "type": "task_start",
+    "timestamp": "2026-01-20T14:18:18.779Z",
+    "category": "Personal"
+  },
+  {
+    "type": "session_start",
+    "timestamp": "2026-01-20T14:19:14.415Z",
+    "category": "Work"
+  },
+  {
+    "type": "task_start",
+    "timestamp": "2026-01-20T14:19:14.418Z",
+    "category": "Work"
+  },
+  {
+    "type": "session_start",
+    "timestamp": "2026-01-20T14:25:19.761Z",
+    "category": "Work"
+  },
+  {
+    "type": "task_start",
+    "timestamp": "2026-01-20T14:25:19.762Z",
+    "category": "Work"
+  },
+  {
+    "type": "session_start",
+    "timestamp": "2026-01-20T14:28:13.330Z",
+    "category": "Work"
+  },
+  {
+    "type": "task_start",
+    "timestamp": "2026-01-20T14:28:13.331Z",
+    "category": "Work"
+  },
+  {
+    "type": "session_start",
+    "timestamp": "2026-01-20T14:33:00.775Z",
+    "category": "Work"
+  },
+  {
+    "type": "task_start",
+    "timestamp": "2026-01-20T14:33:00.777Z",
+    "task": "Finish app",
+    "category": "Work"
   }
 ]

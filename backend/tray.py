@@ -25,7 +25,7 @@ def start_server():
     # Assuming the current directory is root or backend parent
     # We want to run: python -m uvicorn backend.main:app --port 55544
     # Adjust path as necessary
-    cmd = [sys.executable, "-m", "uvicorn", "backend.main:app", "--host", "127.0.0.1", "--port", "55544"]
+    cmd = [sys.executable, "-m", "uvicorn", "backend.main:app", "--host", "127.0.0.1", "--port", "55544", "--reload"]
     server_process = subprocess.Popen(cmd, cwd=os.path.dirname(os.path.dirname(__file__)))
 
 def stop_server():
