@@ -23,6 +23,21 @@ Result = Dict[str, Any]
 # Initialize clients
 todoist_manager = TodoistManager()
 
+# --- Session State Management ---
+from pydantic import BaseModel
+import time
+
+class ActiveSession(BaseModel):
+    task_name: str
+    category: str
+    duration_minutes: float
+    start_time: float # Unix timestamp
+    task_due_date: Optional[str] = None
+    related_tasks: List[Dict[str, Any]] = []
+
+current_session: Optional[ActiveSession] = None
+
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # Startup
@@ -142,6 +157,33 @@ async def categorize_task_endpoint(task_title: str = Body(..., embed=True), cate
     """
     category = categorize_task(task_title, categories)
     return {"category": category}
+
+@app.post("/session/start")
+async def start_session_endpoint(session: ActiveSession = Body(...)):
+    global current_session
+    # If start_time is not provided or 0, set it to now
+    if not session.start_time:
+        session.start_time = time.time()
+    current_session = session
+    print(f"Session started provided: {session.task_name} at {session.start_time}")
+    return {"status": "success", "session": current_session}
+
+@app.get("/session/current")
+async def get_current_session_endpoint():
+    global current_session
+    if current_session:
+        # Calculate elapsed/remaining logic if needed, or just return the static data
+        # The frontend can calculate remaining time based on start_time and duration
+        return {"active": True, "session": current_session, "server_time": time.time()}
+    return {"active": False}
+
+@app.post("/session/stop")
+async def stop_session_endpoint():
+    global current_session
+    current_session = None
+    print("Session stopped/cleared.")
+    return {"status": "success"}
+
 
 # Serve frontend build if it exists
 frontend_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "frontend", "out")

@@ -188,5 +188,23 @@
     "timestamp": "2026-01-20T14:33:00.777Z",
     "task": "Finish app",
     "category": "Work"
+  },
+  {
+    "type": "session_start",
+    "timestamp": "2026-01-20T14:47:42.777Z",
+    "category": "Work"
+  },
+  {
+    "type": "task_start",
+    "timestamp": "2026-01-20T14:47:42.780Z",
+    "task": "Finish app",
+    "category": "Work"
+  },
+  {
+    "type": "timer_stop",
+    "timestamp": "2026-01-20T14:48:05.025Z",
+    "task": "Finish app",
+    "category": "Work",
+    "elapsed": 22
   }
 ]
