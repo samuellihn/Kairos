@@ -1,3 +1,10 @@
 .env
 __pycache__/
 *.pyc
+config.json
+event_log.json
+history.json
+pause_log.json
+task_cache.json
+frontend/package-lock.json
+frontend/package.json

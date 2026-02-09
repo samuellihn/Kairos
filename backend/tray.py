@@ -59,7 +59,7 @@ def setup_tray():
         item('Open Dashboard', on_open),
         item('Exit', on_quit)
     )
-    icon = pystray.Icon("Kairos", icon_image, "Kairos Decider", menu)
+    icon = pystray.Icon("Kairos", icon_image, "Kairos", menu)
     
     start_server()
     icon.run()
